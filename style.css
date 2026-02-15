@@ -1,0 +1,170 @@
+/* -------------------------------
+   RESET
+--------------------------------*/
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* -------------------------------
+   THEME COLORS
+--------------------------------*/
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --card-bg: rgba(255,255,255,0.6);
+  --accent: #00d4ff;
+  --accent-gradient: linear-gradient(90deg,#00d4ff,#0078ff);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f19;
+    --text: #e5e5e5;
+    --card-bg: rgba(25,25,35,0.6);
+    --accent: #00f7ff;
+    --accent-gradient: linear-gradient(90deg,#00f7ff,#4facfe);
+  }
+}
+
+/* -------------------------------
+   HEADER
+--------------------------------*/
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 15px 40px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav a {
+  margin-left: 20px;
+  font-weight: 600;
+  position: relative;
+}
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: .3s;
+}
+header nav a:hover::after { width: 100%; }
+
+/* -------------------------------
+   SECTIONS
+--------------------------------*/
+section { padding: 100px 10%; }
+h1, h2, h3 { margin-bottom: 15px; font-weight: 700; }
+
+/* -------------------------------
+   HERO
+--------------------------------*/
+#hero {
+  height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  color: white;
+  background: var(--accent-gradient);
+  position: relative; overflow: hidden;
+}
+#hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.1), transparent 60%);
+  animation: floatGlow 8s infinite alternate ease-in-out;
+}
+#hero h1 { font-size: 3rem; z-index: 1; }
+#hero p { font-size: 1.2rem; margin-top: 10px; z-index: 1; }
+
+/* -------------------------------
+   ABOUT
+--------------------------------*/
+#about {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* -------------------------------
+   SKILLS
+--------------------------------*/
+#skills .skill { margin: 20px 0; }
+.skill-bar {
+  background: #3333;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 12px;
+  width: 0;
+  border-radius: 20px;
+  background: var(--accent-gradient);
+  transition: width 2s;
+}
+
+/* -------------------------------
+   CERTIFICATES (Swiper)
+--------------------------------*/
+#certificates { margin-top: 40px; }
+.swiper {
+  width: 100%; max-width: 700px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+.swiper-slide {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex; justify-content: center; align-items: center;
+}
+.swiper-slide img {
+  width: 100%; height: auto; border-radius: 15px;
+}
+.swiper-button-next, .swiper-button-prev { color: var(--accent); }
+.swiper-pagination-bullet { background: var(--accent); }
+
+/* -------------------------------
+   PROJECTS
+--------------------------------*/
+#projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  transition: transform .3s, box-shadow .3s;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* -------------------------------
+   ANIMATIONS
+--------------------------------*/
+@keyframes floatGlow {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
